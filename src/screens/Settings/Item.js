@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         resizeMode: 'cover',
-        margin: 18
+        margin: 18,
     },
     textBlock: {
         flexDirection: 'column',
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 19,
         fontWeight: '800',
-        color:'white'
     },
     content: {
         fontSize: 16,

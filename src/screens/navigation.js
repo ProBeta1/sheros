@@ -7,6 +7,7 @@ import Hut from './Hut/Hut';
 import Settings from './Settings/Settings';
 import Time from './Timeline/Timeline';
 import Guideline from './Guideline/Guideline';
+import Alert from './Alert/Alert';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -40,12 +41,12 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="Notification"
-        component={Hut}
+        name="Alert"
+        component={Alert}
         options={{
-          tabBarLabel: 'Notification',
+          tabBarLabel: 'Alert',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={26} />
+            <MaterialCommunityIcons name="alert-octagram" color={color} size={26} />
           ),
         }}
       />
