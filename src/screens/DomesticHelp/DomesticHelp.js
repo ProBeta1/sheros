@@ -4,39 +4,34 @@ import { FlatList, Keyboard, Text, TextInput, TouchableOpacity, View, Image } fr
 import styles from './styles';
 import { firebase } from '../../firebase/config'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import yalert from "../../pics/yalert.gif";
 
+const DomesticHelp = () => {
 
-const Alert = (props) => {
-
- 
     const  id = firebase.auth().currentUser.uid;
 
-    const handleEmergency = () => {
-      props.navigation.navigate("HelpButton");
-    }
-
-    const handleDomestic = () => {
-      props.navigation.navigate("DomesticHelp")
-    }
 
     return (
         <View style={styles.container}>
-          <Text style={styles.title}>Seek Help</Text>
+          <Text style={styles.title}>Help button triggered</Text>
+
+          <Image source={yalert} style={styles.alertIcon} />
+          <Text style={styles.ht}> Anti Domestic Violence Organizations will get in touch with you shortly  </Text>
 
           <TouchableOpacity style={styles.btn}>
-            <Text style={styles.btnText}>Legal advise</Text>
+            <Text style={styles.btnText}>Call police</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.btn2} onPress={handleDomestic}>
-            <Text style={styles.btnText}>Domestic violence</Text>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.btnText}>Call ambulance</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.btn3} onPress={handleEmergency}>
-            <Text style={styles.btnText}>Emergency !!</Text>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.btnText}>Call helpline</Text>
           </TouchableOpacity>
               
         </View>
     )
 }
 
-export default Alert;
+export default DomesticHelp;
