@@ -4,21 +4,26 @@ import styles from './styles';
 import { firebase } from '../../firebase/config'
 import YoutubePlayer from "react-native-youtube-iframe";
 import { WebView } from 'react-native-webview';
-
+import * as Location from 'expo-location';
 
 
 
 const Hut = () => {
-    const [title, setTitle] = useState("");
-    const [des, setDes] = useState("");
-    const [ready, setReady] = useState(false);
-    const [cstate, setCState] = useState("");
-    const [quality, setQuality] = useState();
-    const [error, setErr] = useState("");
-    const [containerMounted, setContainerMounted] = useState(false);
 
     const id = firebase.auth().currentUser.uid;
-    let user = firebase.auth().currentUser;
+
+    useEffect(() => {
+      (async () => {
+        let { status } = await Location.requestPermissionsAsync();
+        if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        firebase.firestore().collection("location").doc(id).set(location)
+      })();
+    }, []);
+
 
 
     const [playing, setPlaying] = useState(false);

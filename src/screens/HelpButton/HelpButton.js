@@ -11,6 +11,7 @@ const HelpButton = () => {
   const [handled, setHandled] = useState(false);
   const [password, setPassword] = useState();
 
+ // send the notifs to nearby with live updates
  
     const  id = firebase.auth().currentUser.uid;
 

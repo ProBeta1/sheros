@@ -8,21 +8,35 @@ import MapView, { PROVIDER_GOOGLE , Marker, MarkerAnimated } from 'react-native-
 import * as Location from 'expo-location';
 import help from "../../pics/help.jpg";
 
-const Danger = () => {
+const Danger = (props) => {
   const [location, setLocation] = useState({coords:{latitude:0,longitude:0}});
   const [errorMsg, setErrorMsg] = useState(null);
+  const [counter, setCounter] = useState(0);
+
+  const id = firebase.auth().currentUser.uid;
 
   useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-      }
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
+    setTimeout(() => {
+
+      (async () => {
+        let { status } = await Location.requestPermissionsAsync();
+        if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+        }
+  
+        let location = await Location.getCurrentPositionAsync({});
+        setLocation(location);
+        firebase.firestore().collection("location").doc(id).set(location)
+      })();
+      if(counter >100)
+        setCounter(0);
+      else
+        setCounter(counter+1)
+
+    },5000);
+    
+  }, [counter]);
 
   let text = 'Waiting..';
   if (errorMsg) {
@@ -49,7 +63,7 @@ const Danger = () => {
               longitudeDelta: 0.0121,
             }}
           >
-           <Marker coordinate={{ latitude: location.coords.latitude, longitude:  location.coords.longitude }} title="lol" description="hahahhaha" pinColor="blue" >
+           <Marker coordinate={{ latitude: location.coords.latitude, longitude:  location.coords.longitude }} title={JSON.stringify(counter)} description="hahahhaha">
               <Image source={help} style={styles.helpImage} />
              </Marker>
 
