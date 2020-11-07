@@ -19,11 +19,16 @@ const Alert = (props) => {
       props.navigation.navigate("DomesticHelp")
     }
 
+    const handleFakeLegal = () => {
+      //just for testing this screen 
+      props.navigation.navigate("Danger")
+    }
+
     return (
         <View style={styles.container}>
           <Text style={styles.title}>Seek Help</Text>
 
-          <TouchableOpacity style={styles.btn}>
+          <TouchableOpacity style={styles.btn} onPress={handleFakeLegal}>
             <Text style={styles.btnText}>Legal advise</Text>
           </TouchableOpacity>
 
