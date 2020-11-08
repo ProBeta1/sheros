@@ -14,6 +14,7 @@ import DomesticHelp from './src/screens/DomesticHelp/DomesticHelp';
 import Danger from './src/screens/Danger/Danger';
 if (!global.btoa) { global.btoa = encode }
 if (!global.atob) { global.atob = decode }
+import { Permissions, Notifications } from 'expo';
 
 
 const Stack = createStackNavigator();
@@ -22,6 +23,7 @@ export default function App() {
 
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
+
 
   useEffect(() => {
     const usersRef = firebase.firestore().collection('users');

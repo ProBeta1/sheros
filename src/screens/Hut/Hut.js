@@ -5,6 +5,7 @@ import { firebase } from '../../firebase/config'
 import YoutubePlayer from "react-native-youtube-iframe";
 import { WebView } from 'react-native-webview';
 import * as Location from 'expo-location';
+import { Permissions, Notifications } from 'expo';
 
 
 
@@ -23,6 +24,34 @@ const Hut = () => {
         firebase.firestore().collection("location").doc(id).set(location)
       })();
     }, []);
+
+
+    useEffect(() => {
+      askPermissions = async () => {
+        const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+        let finalStatus = existingStatus;
+        if (existingStatus !== 'granted') {
+          const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+          finalStatus = status;
+        }
+        if (finalStatus !== 'granted') {
+          return false;
+        }
+        return true;
+      };
+      
+      registerForPushNotifications = async () => {
+        const enabled = await this.askPermissions();
+        if (!enabled) {
+          return Promise.resolve();
+        }
+        // Get the token that uniquely identifies this device
+        let token = await Notifications.getExpoPushTokenAsync();
+        
+        // pass it to db
+        firebase.firestore().collection('expoToken').doc(id).set(token);
+      };
+    },[]);
 
 
 

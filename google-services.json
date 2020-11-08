@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "767966140273",
+    "firebase_url": "https://sheros-291df.firebaseio.com",
+    "project_id": "sheros-291df",
+    "storage_bucket": "sheros-291df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767966140273:android:32ba072c155fc4ddb648d0",
+        "android_client_info": {
+          "package_name": "com.wiggy.probeta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767966140273-f1tr30hh1k11d4cif7bf8np0ucn4pivr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGvpzkWVH1bHRsowwPIFyBx8jyw2pzPc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767966140273-f1tr30hh1k11d4cif7bf8np0ucn4pivr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

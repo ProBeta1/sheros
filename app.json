@@ -26,7 +26,8 @@
     },
     "description": "Hackathon submission",
     "android": {
-      "package": "com.lonealone.probeta",
+      "package": "com.wiggy.probeta",
+      "googleServicesFile": "./google-services.json",
       "config": {
          "googleMaps": { "apiKey": "AIzaSyBEwEUa2RKM0on5eleiftoBmwgEYKA_mYY" }   
       }
